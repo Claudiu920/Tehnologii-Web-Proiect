@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PhoneStore - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>PhoneStore</h1>
+    <p>Gestioneaza inventarul magazinului tau de telefoane.</p>
+    <p class="app-count">3 telefoane, dintre care 2 in stoc</p>
+  </header>
+  
+  <main class="container">
+    <section class="panel">
+      <h2>Adauga telefon</h2>
+      <form class="item-form">
+        <label>Model
+          <input type="text" name="titlu" placeholder="Ex: iPhone 15 Pro" />
+        </label>
+        <label>Starea dispozitivului
+          <select name="eticheta">
+            <option value="nou">Nou</option>
+            <option value="resigilat">Resigilat</option>
+            <option value="second-hand">Second-hand</option>
+          </select>
+        </label>
+        <button type="submit">Adauga</button>
+      </form>
+    </section>
+    
+    <section class="panel">
+      <h2>Inventarul meu</h2>
+      <!-- <p class="empty">Nu exista niciun element.</p> -->
+      <ul class="item-list">
+        <!-- Element marcat ca finalizat (Vandut) -->
+        <li class="item-card done">
+          <div>
+            <h3>iPhone 15 Pro</h3>
+            <span class="badge badge-nou">Nou</span>
+          </div>
+          <span class="status">Vandut</span>
+        </li>
+        <li class="item-card">
+          <div>
+            <h3>Samsung Galaxy S24</h3>
+            <span class="badge badge-resigilat">Resigilat</span>
+          </div>
+          <span class="status">In stoc</span>
+        </li>
+        <li class="item-card">
+          <div>
+            <h3>Google Pixel 8</h3>
+            <span class="badge badge-sh">Second-hand</span>
+          </div>
+          <span class="status">In stoc</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+  
+  <footer class="app-footer">Proiect Tehnologii Web</footer>
+</body>
+</html>
