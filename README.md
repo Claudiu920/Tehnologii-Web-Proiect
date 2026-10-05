@@ -43,3 +43,24 @@ Deschide `index.html` intr-un browser. Fara pas de compilare (build), fara serve
 | S1-R6 | 2 coloane pe desktop, 1 sub 700px | style.css#L.. (@media) | redimensioneaza < 700px |
 | S1-R7 | focus vizibil, tema intunecata lizibila | style.css#L.. | Tab; modul intunecat (dark mode) |
 | S1-R8 | commit-ul "Stage 1" publicat (pushed) | link catre commit | istoricul de commit-uri |
+
+
+## Stadiu
+- [x] Etapa 1: mockup static
+- [x] Etapa 2: logica datelor in JavaScript
+- [ ] Etapa 3: Vite si proiect React
+
+## Etapa 2: Logica datelor
+JavaScript pur, fara modificarea DOM-ului. `telefoane.js` contine array-ul si functiile imutabile care gestioneaza operatiunile. Rezultatele sunt testate si afisate direct in consola browserului (F12).
+
+## Tabel de verificare Etapa 2
+
+| ID | Cerinta | Unde (permalink) | Cum se verifica |
+| --- | --- | --- | --- |
+| S2-R1 | Fisier JS legat, afiseaza la incarcare | index.html#L.. (script) | deschide pagina, F12 |
+| S2-R2 | 3+ elemente cu id, nume, stare, eticheta | telefoane.js#L..-L.. | citire |
+| S2-R3 | listare, numarare, cautare, adaugare, comutare, stergere | telefoane.js#L..-L.. | afisaj in consola |
+| S2-R4 | adaugarea respinge nume gol si eticheta invalida | telefoane.js#L..-L.. | ultimele 2 linii din consola |
+| S2-R5 | array-ul original ramane neschimbat dupa adaugare | telefoane.js#L.. | linie in consola |
+| S2-R6 | README sectiunea Etapa 2 + Jurnal AI | README.md, ai-log/etapa-02.md | citire |
+| S2-R7 | commit "Stage 2" publicat | link catre commit | istoricul de commit-uri |
