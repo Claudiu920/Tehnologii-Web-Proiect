@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Culori mod deschis */
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #111111;
+  --muted: #6b7280;
+  
+  /* Tematica Negru-Galben */
+  --accent: #ffcc00; /* Galben intens */
+  --accent-dark: #e6b800; /* Galben mai închis pentru hover */
+  --header-bg: #111111; /* Negru */
+  --header-text: #ffcc00;
+  --btn-text: #111111; /* Text negru pe buton galben */
+  
+  --border: #e5e7eb;
+  
+  /* Culori pentru etichete */
+  --badge-nou: #10b981;
+  --badge-resigilat: #f59e0b;
+  --badge-sh: #6366f1;
+}
+
+/* Tema intunecata (Dark Mode) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --card: #242424;
+    --text: #f1f1f1;
+    --muted: #9ca3af;
+    --border: #333333;
+    --header-bg: #0a0a0a;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Antet */
+.app-header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  text-align: center;
+  padding: 24px 16px;
+  border-bottom: 4px solid var(--accent);
+}
+
+.header-banner {
+  display: block;
+  max-width: 500px; /* Controlează dimensiunea maximă a imaginii */
+  width: 100%; /* Se adaptează pe ecrane mai mici */
+  height: auto;
+  margin: 0 auto 16px auto; /* Centrează imaginea pe orizontală */
+  
+  /* Adăugarea ramei */
+  border: 4px solid var(--accent); /* Ramă galbenă */
+  border-radius: 8px; /* Colțuri ușor rotunjite */
+  padding: 4px; /* Lasă un mic spațiu (paspartu) între imagine și ramă */
+  background-color: var(--header-bg); /* Fundalul spațiului dintre ramă și imagine */
+}
+
+.app-header h1 { margin: 0 0 8px 0; color: var(--accent); }
+.app-header p { margin: 4px 0; color: #ffffff; }
+
+/* Grid principal - Formularul mai mic in stanga, lista mai mare */
+.container {
+  max-width: 1200px; /* Lățime mărită */
+  margin: 32px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr; /* 1 fracțiune pentru formular, 3 pentru listă */
+  gap: 32px;
+  align-items: start;
+}
+
+/* Panouri (Carduri formular/lista) */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+.panel h2 { margin-top: 0; }
+
+/* Formular Flexbox */
+.item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.item-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+}
+.item-form input, .item-form select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+.item-form button {
+  padding: 12px;
+  background: var(--accent);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.item-form button:hover {
+  background: var(--accent-dark);
+}
+
+/* Lista si elementele - Carduri mai mari */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px; /* Padding crescut pentru a mări cardul */
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+.item-card:hover {
+  border-color: var(--accent);
+}
+.item-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem; /* Text mai mare pentru telefoane */
+}
+
+/* Etichete status */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: bold;
+}
+.badge-nou { background: var(--badge-nou); }
+.badge-resigilat { background: var(--badge-resigilat); }
+.badge-sh { background: var(--badge-sh); }
+
+.status { font-weight: bold; font-size: 1.1rem; }
+
+/* Stilizare card marcat ca finalizat */
+.item-card.done h3 {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+.item-card.done .status {
+  color: var(--muted);
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+/* Focus vizibil - adaptat la culoarea de accent (Galben) */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Adaptare ecrane inguste */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
