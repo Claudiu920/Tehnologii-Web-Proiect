@@ -87,3 +87,37 @@ A fost configurat un proiect Vite bazat pe React in folderul `frontend`. Codul s
 | S3-R5 | node_modules ignorat, build-ul trece | frontend/.gitignore | npm run build |
 | S3-R6 | sectiune Etapa 3 in README + jurnal AI | README.md, ai-log/etapa-03.md | citire |
 | S3-R7 | commit-ul "Stage 3" publicat | link catre commit | istoricul de commit-uri |
+
+# PhoneRo - Magazin de Telefoane
+
+Proiect realizat pentru disciplina Tehnologii Web.
+
+---
+
+## Etapa 4: Componente construite din date
+
+În această etapă, lista de telefoane este randată dinamic din date cu ajutorul a două componente React reutilizabile:
+- `TelefonList`: Primește întregul tablou de date (`telefoane`) și randează câte un card pentru fiecare element. Tratează și cazul în care lista este goală (afisând un mesaj corespunzător).
+- `TelefonCard`: Primește datele unui singur telefon prin intermediul proprietăților (`props`) și afișează informațiile despre acesta (titlu, preț, stare, disponibilitate în stoc).
+
+---
+
+## Stadiu proiect (Status)
+
+- [x] Etapa 1: Tema și structura de date
+- [x] Etapa 2: Pagina HTML statică
+- [x] Etapa 3: Proiect Vite și React
+- [x] Etapa 4: Componente randate din date
+
+---
+
+## Tabel de verificare (Checklist Etapa 4)
+
+| Cerință | Stare |
+| :--- | :---: |
+| Datele sunt transmise prin `props` către componente | ✅ |
+| Componenta copil (`TelefonCard`) afișează corect un element | ✅ |
+| Componenta părinte (`TelefonList`) parcurge lista folosind `.map()` | ✅ |
+| Fiecare element din listă are un atribut unic `key` | ✅ |
+| Este tratat cazul în care lista este goală (`telefoane = []`) | ✅ |
+| Nu există erori sau avertismente în consola browser-ului | ✅ |
