@@ -64,3 +64,14 @@ JavaScript pur, fara modificarea DOM-ului. `telefoane.js` contine array-ul si fu
 | S2-R5 | array-ul original ramane neschimbat dupa adaugare | telefoane.js#L.. | linie in consola |
 | S2-R6 | README sectiunea Etapa 2 + Jurnal AI | README.md, ai-log/etapa-02.md | citire |
 | S2-R7 | commit "Stage 2" publicat | link catre commit | istoricul de commit-uri |
+
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+TaskList receives the whole array and renders one card per item
+TaskCard receives a single item through props and displays it
+
+## Status
+- [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
+
