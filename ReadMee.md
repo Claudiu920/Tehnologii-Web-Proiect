@@ -121,3 +121,14 @@ Proiect realizat pentru disciplina Tehnologii Web.
 | Fiecare element din listă are un atribut unic `key` | ✅ |
 | Este tratat cazul în care lista este goală (`telefoane = []`) | ✅ |
 | Nu există erori sau avertismente în consola browser-ului | ✅ |
+
+## Tabel de verificare Etapa 5
+| ID | Cerinta | Unde (permalink) | Cum se verifica |
+| --- | --- | --- | --- |
+| S5-R1 | State local pentru lista de date | frontend/src/App.jsx | citire cod (`useState`) |
+| S5-R2 | State local pentru functionalitate de UI (Dark Mode) | frontend/src/App.jsx | citire cod (`isDark`) |
+| S5-R3 | Functie de modificare state (comutare status inStoc) | frontend/src/App.jsx | apasa checkbox pe card |
+| S5-R4 | Functie de stergere element din state | frontend/src/App.jsx | apasa buton 'Sterge' |
+| S5-R5 | Transmiterea evenimentelor (props) catre copii | frontend/src/components/TelefonCard.jsx | citire cod (`onToggle`, `onDelete`) |
+| S5-R6 | README actualizat + Jurnal AI Etapa 5 | README.md, ai-log/etapa-05.md | citire |
+| S5-R7 | Commit separat cu tabelul si push final | link catre commit | istoricul de commit-uri |
