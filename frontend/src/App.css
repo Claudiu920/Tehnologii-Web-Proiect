@@ -233,3 +233,18 @@ body {
   --border: #333333;
   --header-bg: #0a0a0a;
 }
+
+/* Etapa 6: stări de încărcare și de eroare */
+.info { 
+  color: var(--muted); 
+  font-style: italic;
+  padding: 10px 0;
+}
+
+.error {
+  color: #dc2626;
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 8px;
+  padding: 12px;
+}

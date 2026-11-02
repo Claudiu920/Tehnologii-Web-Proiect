@@ -132,3 +132,40 @@ Proiect realizat pentru disciplina Tehnologii Web.
 | S5-R5 | Transmiterea evenimentelor (props) catre copii | frontend/src/components/TelefonCard.jsx | citire cod (`onToggle`, `onDelete`) |
 | S5-R6 | README actualizat + Jurnal AI Etapa 5 | README.md, ai-log/etapa-05.md | citire |
 | S5-R7 | Commit separat cu tabelul si push final | link catre commit | istoricul de commit-uri |
+
+## Etapa 6: Date de la un API (useEffect)
+Datele nu mai sunt scrise direct în codul React, ci sunt preluate în mod dinamic de la un server local REST construit cu `json-server` (`db.json`)[cite: 22, 23]. Aplicația gestionează cele trei stări ale unei cereri: încărcare (loading), succes și eroare explicită[cite: 22, 27].
+
+## Cum se ruleaza (Etapa 6)
+Pentru a rula aplicația cu tot cu serverul de API, ai nevoie de **două terminale** deschise în folderul `frontend/`:
+1. Terminal 1 (pornirea serverului API):
+   ```bash
+   npm run api
+
+```
+
+2. Terminal 2 (pornirea aplicației React):
+```bash
+npm run dev
+
+```
+
+
+
+Apoi deschide în browser adresa `http://localhost:5173`.
+
+## Stadiu
+
+* [x] Etapa 6: Date de la un API (useEffect)
+
+## Tabel de verificare Etapa 6
+
+| ID | Cerinta | Unde (permalink) | Cum se verifica |
+| --- | --- | --- | --- |
+| S6-R1 | `npm run api` porneşte, ruta afişează JSON | frontend/package.json, frontend/db.json | deschide `localhost:3001/telefoane` |
+| S6-R2 | Datele nu mai sunt scrise direct în codul React | frontend/src/App.jsx | citire cod |
+| S6-R3 | Mesaj de aşteptare (loading) la încărcare | frontend/src/App.jsx | simulare cu delay |
+| S6-R4 | Mesaj de eroare explicit când API-ul este oprit | frontend/src/App.jsx | oprește `npm run api`, reîncarcă |
+| S6-R5 | `fetch` doar în `api.js`, URL preluat din variabila de mediu | frontend/src/api.js, frontend/.env.example | căutare după `fetch` |
+| S6-R6 | README actualizat + Jurnal AI Etapa 6 | README.md, ai-log/etapa-06.md | citire |
+| S6-R7 | Commit-ul pentru Etapa 6 publicat pe GitHub | istoricul de commit-uri | verificare GitHub |

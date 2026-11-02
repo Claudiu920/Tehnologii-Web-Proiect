@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TelefonList from "./components/TelefonList.jsx";
+import { fetchTelefoane } from "./api.js";
 import "./App.css";
 
-const dateInitiale = [
-  { id: 1, titlu: "iPhone 15 Pro", inStoc: false, stare: "nou", pret: 5000 },
-  { id: 2, titlu: "Samsung Galaxy S24", inStoc: true, stare: "resigilat", pret: 4000 },
-  { id: 3, titlu: "Google Pixel 8", inStoc: true, stare: "second-hand", pret: 3000 }
-];
-
 export default function App() {
-  const [telefoane, setTelefoane] = useState(dateInitiale);
+  const [telefoane, setTelefoane] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    let ignore = false;
+    async function load() {
+      try {
+        const data = await fetchTelefoane();
+        if (!ignore) setTelefoane(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   const inStocCount = telefoane.filter(t => t.inStoc).length;
 
@@ -41,11 +56,22 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Inventarul meu</h2>
-          <TelefonList
-            telefoane={telefoane}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
+          
+          {loading && <p className="info">Se încarcă...</p>}
+          
+          {error && (
+            <p className="error">
+              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+
+          {!loading && !error && (
+            <TelefonList
+              telefoane={telefoane}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
         </section>
       </main>
     </div>
