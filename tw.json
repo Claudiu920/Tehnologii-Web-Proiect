@@ -1,0 +1,9 @@
+{
+  "resource": "telefoane",
+  "title": "titlu",
+  "done": "inStoc",
+  "sample": {
+    "pret": 2500,
+    "stare": "nou"
+  }
+}

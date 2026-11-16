@@ -169,3 +169,25 @@ Apoi deschide în browser adresa `http://localhost:5173`.
 | S6-R5 | `fetch` doar în `api.js`, URL preluat din variabila de mediu | frontend/src/api.js, frontend/.env.example | căutare după `fetch` |
 | S6-R6 | README actualizat + Jurnal AI Etapa 6 | README.md, ai-log/etapa-06.md | citire |
 | S6-R7 | Commit-ul pentru Etapa 6 publicat pe GitHub | istoricul de commit-uri | verificare GitHub |
+
+
+## Etapa 7: Formular și validare
+Utilizatorii pot adăuga telefoane direct din interfață printr-un formular controlat și validat, iar operațiile de adăugare (`POST`), bifare (`PATCH`) și ștergere (`DELETE`) se salvează pe serverul `json-server`, rezistând la reîncărcarea paginii. Totodată, aplicația este pregătită pentru verificarea automată prin fișierul `tw.json` și atributele `data-testid`.
+
+### Stadiu
+- [x] Etapa 7: Formular și validare
+
+### Tabel de verificare Etapa 7
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+| --- | --- | --- | --- |
+| S7-R1 | Formular controlat (`value` + `onChange` pe câmpuri) | `frontend/src/components/TelefonForm.jsx` | citire cod |
+| S7-R2 | Câmpul gol afișează eroare în pagină, fără cerere la server | `frontend/src/components/TelefonForm.jsx` | trimitere formular gol + tab Network |
+| S7-R3 | Elementul adăugat apare în listă și rămâne după refresh | `frontend/src/App.jsx`, `frontend/src/api.js` | adăugare element + reîncărcare pagină |
+| S7-R4 | Bifarea și ștergerea se salvează și rămân după refresh | `frontend/src/App.jsx`, `frontend/src/api.js` | bifare/ștergere + reîncărcare pagină |
+| S7-R5 | Buton dezactivat cât timp se trimite, golire doar la succes | `frontend/src/components/TelefonForm.jsx` | delay pe server / oprire server la trimitere |
+| S7-R6 | Fișierul `tw.json` în rădăcină și atributele `data-testid` | `tw.json`, `TelefonCard.jsx`, `TelefonList.jsx`, `TelefonForm.jsx`, `App.jsx` | verificare în consola browserului |
+| S7-R7 | Secțiunea Etapa 7 în `README.md` + `ai-log/etapa-07.md` | `README.md`, `ai-log/etapa-07.md` | citire |
+| S7-R8 | Commit-ul etapei publicat pe GitHub | istoricul de commit-uri | verificare GitHub |
+```[cite: 32, 33, 35, 37, 38, 42, 43]
+
+Vrei să îți dau și pașii de `git add`, `git commit` și `git push` pentru a publica Etapa 7 pe GitHub?

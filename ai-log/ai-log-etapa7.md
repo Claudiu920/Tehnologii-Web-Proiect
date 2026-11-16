@@ -1,0 +1,9 @@
+# Jurnal utilizare AI - Etapa 7
+
+**Sarcina:** Adăugarea formularului controlat cu validare, persistarea operațiilor de adăugare, bifare și ștergere pe serverul `json-server` și pregătirea aplicației pentru verificarea automată (`tw.json` și atribute `data-testid`).
+
+**Descrierea interactiunii:**
+1. **Extinderea stratului de API (`frontend/src/api.js`):** Am creat o funcție comună `request` care gestionează antetul JSON, verifică `res.ok` și tratează răspunsurile `204 No Content`, peste care am construit funcțiile `fetchTelefoane`, `createTelefon`, `updateTelefon` (`PATCH`) și `deleteTelefon` (`DELETE`).
+2. **Formular controlat și validare (`frontend/src/components/TelefonForm.jsx`):** Am implementat formularul cu `value` și `onChange` pe câmpuri, prevenirea reîncărcării paginii prin `e.preventDefault()`, validare înainte de trimitere (titlu obligatoriu, maximum 100 de caractere, preț valid) și afișarea erorilor direct în pagină, păstrând textul introdus la eroare și dezactivând butonul cât timp se trimite cererea.
+3. **Persistență și actualizare din răspunsul serverului (`frontend/src/App.jsx`):** Am conectat `handleAdd`, `handleToggle` și `handleDelete` la API, astfel încât modificările să fie trimise mai întâi către server, iar state-ul să se actualizeze cu datele confirmate de acesta și să reziste la reîncărcarea paginii.
+4. **Repere pentru verificarea automată (`tw.json` și `data-testid`):** Am adăugat fișierul `tw.json` în rădăcina repository-ului și atributele `data-testid` (precum și `data-id`) pe elemente în `TelefonForm.jsx`, `TelefonCard.jsx`, `TelefonList.jsx` și `App.jsx`, apoi am ajustat layout-ul pe două coloane și stilurile în `App.css`.

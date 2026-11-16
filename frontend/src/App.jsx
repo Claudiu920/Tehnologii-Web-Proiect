@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import TelefonList from "./components/TelefonList.jsx";
-import { fetchTelefoane } from "./api.js";
+import TelefonForm from "./components/TelefonForm.jsx";
+import {
+  createTelefon,
+  deleteTelefon,
+  fetchTelefoane,
+  updateTelefon,
+} from "./api.js";
 import "./App.css";
 
 export default function App() {
@@ -27,16 +33,31 @@ export default function App() {
     };
   }, []);
 
-  const inStocCount = telefoane.filter(t => t.inStoc).length;
+  const inStocCount = telefoane.filter((t) => t.inStoc).length;
 
-  function handleToggle(id) {
-    setTelefoane(telefoane.map(t =>
-      t.id === id ? { ...t, inStoc: !t.inStoc } : t
-    ));
+  async function handleAdd(telefonNou) {
+    const creat = await createTelefon(telefonNou);
+    setTelefoane((prev) => [...prev, creat]);
   }
 
-  function handleDelete(id) {
-    setTelefoane(telefoane.filter(t => t.id !== id));
+  async function handleToggle(id) {
+    const telefon = telefoane.find((t) => t.id === id);
+    if (!telefon) return;
+    try {
+      const actualizat = await updateTelefon(id, { inStoc: !telefon.inStoc });
+      setTelefoane((prev) => prev.map((t) => (t.id === id ? actualizat : t)));
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      await deleteTelefon(id);
+      setTelefoane((prev) => prev.filter((t) => t.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
@@ -52,20 +73,29 @@ export default function App() {
           {isDark ? "Mod Luminos ☀️" : "Mod Întunecat 🌙"}
         </button>
       </header>
-      
+
       <main className="container">
         <section className="panel">
+          <h2>Adaugă telefon</h2>
+          <TelefonForm onAdd={handleAdd} />
+        </section>
+
+        <section className="panel">
           <h2>Inventarul meu</h2>
-          
-          {loading && <p className="info">Se încarcă...</p>}
-          
+
+          {loading && (
+            <p className="info" data-testid="loading">
+              Se încarcă...
+            </p>
+          )}
+
           {error && (
-            <p className="error">
+            <p className="error" data-testid="error">
               Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
             </p>
           )}
 
-          {!loading && !error && (
+          {!loading && (
             <TelefonList
               telefoane={telefoane}
               onToggle={handleToggle}

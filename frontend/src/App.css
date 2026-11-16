@@ -248,3 +248,45 @@ body {
   border-radius: 8px;
   padding: 12px;
 }
+
+/* Etapa 7: layout pe două coloane */
+.container {
+  grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.telefon-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.telefon-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.telefon-form input,
+.telefon-form select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+}
+
+.telefon-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.telefon-form input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
