@@ -190,4 +190,20 @@ Utilizatorii pot adăuga telefoane direct din interfață printr-un formular con
 | S7-R8 | Commit-ul etapei publicat pe GitHub | istoricul de commit-uri | verificare GitHub |
 ```[cite: 32, 33, 35, 37, 38, 42, 43]
 
-Vrei să îți dau și pașii de `git add`, `git commit` și `git push` pentru a publica Etapa 7 pe GitHub?
+## Etapa 8: Navigare și stilizare pe componente
+Aplicația este organizată ca Single Page Application cu React Router (listă pe `/`, pagină de detaliu dinamică pe `/telefoane/:id`, pagină `/despre` și pagină 404 pe `*`), cu un layout comun (`Layout` + `<Outlet />`) și stiluri pe componente prin CSS Modules (`*.module.css`), păstrând doar variabilele și clasele comune în `src/index.css`.
+
+### Stadiu
+- [x] Etapa 8: Navigare și stilizare pe componente
+
+### Tabel de verificare Etapa 8
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+| --- | --- | --- | --- |
+| S8-R1 | Navigația din antet schimbă pagina fără reîncărcare | `frontend/src/App.jsx`, `frontend/src/components/Layout.jsx` | click pe linkuri + tab Network |
+| S8-R2 | Click pe un element deschide pagina lui de detaliu | `frontend/src/components/TelefonCard.jsx`, `frontend/src/pages/TelefonDetaliuPage.jsx` | click pe titlul unui telefon |
+| S8-R3 | Refresh pe ruta de detaliu funcționează; ID inexistent afișează eroare | `frontend/src/pages/TelefonDetaliuPage.jsx` | refresh pe `/telefoane/1`, test pe `/telefoane/999` |
+| S8-R4 | Adresă inexistentă afișează pagina 404 a aplicației | `frontend/src/App.jsx`, `frontend/src/pages/NotFoundPage.jsx` | deschidere adresă inventată (ex. `/ceva`) |
+| S8-R5 | Fiecare componentă are `.module.css`; `index.css` doar stiluri comune | `frontend/src/components/`, `frontend/src/pages/`, `frontend/src/index.css` | citire cod și inspectare elemente |
+| S8-R6 | Atributele `data-testid` și ruta `/telefoane/:id` | `Layout.jsx`, `TelefonCard.jsx`, `TelefonDetaliuPage.jsx`, `NotFoundPage.jsx` | interogări în consola browserului |
+| S8-R7 | Secțiunea Etapa 8 în `README.md` + `ai-log/etapa-08.md` | `README.md`, `ai-log/etapa-08.md` | citire |
+| S8-R8 | Commit-ul etapei publicat pe GitHub | istoricul de commit-uri | verificare GitHub |

@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-const STARI = [
-  { value: "nou", label: "Nou" },
-  { value: "resigilat", label: "Resigilat" },
-  { value: "second-hand", label: "Second Hand" },
-];
+import { STARI } from "../constants.js";
+import styles from "./TelefonForm.module.css";
 
 const TITLU_MAX = 100;
 
@@ -20,8 +16,12 @@ export default function TelefonForm({ onAdd }) {
     const p = Number(pret);
 
     if (t === "") return "Titlul este obligatoriu.";
-    if (t.length > TITLU_MAX) return `Titlul are maximum ${TITLU_MAX} de caractere.`;
-    if (!Number.isFinite(p) || p <= 0) return "Prețul trebuie să fie un număr mai mare decât 0.";
+    if (t.length > TITLU_MAX) {
+      return `Titlul are maximum ${TITLU_MAX} de caractere.`;
+    }
+    if (!Number.isFinite(p) || p <= 0) {
+      return "Prețul trebuie să fie un număr mai mare decât 0.";
+    }
     return "";
   }
 
@@ -54,7 +54,7 @@ export default function TelefonForm({ onAdd }) {
   }
 
   return (
-    <form className="telefon-form" onSubmit={handleSubmit} noValidate data-testid="form">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
       <label>
         Titlu
         <input
@@ -100,7 +100,7 @@ export default function TelefonForm({ onAdd }) {
         </p>
       )}
 
-      <button type="submit" disabled={trimite} data-testid="form-submit">
+      <button type="submit" className="btn" disabled={trimite} data-testid="form-submit">
         {trimite ? "Se salvează..." : "Adaugă"}
       </button>
     </form>

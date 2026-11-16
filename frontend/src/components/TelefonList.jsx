@@ -1,4 +1,5 @@
 import TelefonCard from "./TelefonCard.jsx";
+import styles from "./TelefonList.module.css";
 
 export default function TelefonList({ telefoane, onToggle, onDelete }) {
   if (telefoane.length === 0) {
@@ -10,7 +11,7 @@ export default function TelefonList({ telefoane, onToggle, onDelete }) {
   }
 
   return (
-    <ul className="item-list">
+    <ul className={styles.list}>
       {telefoane.map((telefon) => (
         <TelefonCard
           key={telefon.id}

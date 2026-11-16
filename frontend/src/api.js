@@ -20,6 +20,10 @@ export function fetchTelefoane() {
   return request("/telefoane");
 }
 
+export function fetchTelefon(id) {
+  return request(`/telefoane/${id}`);
+}
+
 export function createTelefon(telefon) {
   return request("/telefoane", {
     method: "POST",
