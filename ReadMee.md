@@ -207,3 +207,50 @@ Aplicația este organizată ca Single Page Application cu React Router (listă p
 | S8-R6 | Atributele `data-testid` și ruta `/telefoane/:id` | `Layout.jsx`, `TelefonCard.jsx`, `TelefonDetaliuPage.jsx`, `NotFoundPage.jsx` | interogări în consola browserului |
 | S8-R7 | Secțiunea Etapa 8 în `README.md` + `ai-log/etapa-08.md` | `README.md`, `ai-log/etapa-08.md` | citire |
 | S8-R8 | Commit-ul etapei publicat pe GitHub | istoricul de commit-uri | verificare GitHub |
+
+## Etapa 9: Backend propriu (Node.js și Express)
+`json-server` și `frontend/db.json` au fost eliminate complet. API-ul este acum un server propriu în `backend/` construit cu Node.js (module ES) și Express 5, cu rute REST complete pe `/telefoane`, validare pe server cu listă albă de câmpuri (`validation.js`), CORS configurat pentru originea frontendului (`http://localhost:5173`), rută `/health` și tratare centralizată a erorilor în format `{ error: "..." }`. Datele sunt păstrate temporar în memorie și se resetează la repornirea serverului (în Etapa 10 vor fi mutate în MariaDB).
+
+### Cum se rulează (Etapa 9)
+Sunt necesare **două terminale**, din rădăcina repository-ului:
+1. Terminal 1 (backend Express, port 3001):
+   ```bash
+   cd backend && npm install && npm run dev
+   ```
+2. Terminal 2 (frontend React + Vite, port 5173):
+   ```bash
+   cd frontend && npm install && npm run dev
+   ```
+
+Verificare rapidă a API-ului cu `curl`:
+```bash
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/health
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/telefoane
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/telefoane \
+  -H "Content-Type: application/json" \
+  -d '{"titlu":"Din curl","pret":2500,"stare":"nou","inStoc":false}'
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/telefoane \
+  -H "Content-Type: application/json" \
+  -d '{"titlu":""}'
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/telefoane/999
+curl -s -w ' -> %{http_code}\n' -X PATCH http://localhost:3001/telefoane/4 \
+  -H "Content-Type: application/json" \
+  -d '{"inStoc":true}'
+curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/telefoane/4
+```
+
+### Stadiu
+- [x] Etapa 8: Navigare și stilizare pe componente
+- [x] Etapa 9: Backend propriu (Node.js și Express)
+- [ ] Etapa 10: Bază de date MariaDB și CRUD complet
+
+### Tabel de verificare Etapa 9
+| ID | Cerință | Unde (permalink) | Cum se verifică |
+| --- | --- | --- | --- |
+| S9-R1 | `npm run dev` în `backend/` pornește API-ul pe portul 3001 | `backend/package.json`, `backend/src/server.js` | pornire server, deschidere `/health` |
+| S9-R2 | Toate cele cinci rute răspund cu codurile HTTP corecte | `backend/src/routes/telefoane.js#L27-L68` | comenzile `curl` din README |
+| S9-R3 | Datele invalide returnează `400` și un mesaj clar `{ error: "..." }` | `backend/src/validation.js#L1-L65` | `POST` cu obiect gol și titlu gol |
+| S9-R4 | Aplicația React funcționează cu `json-server` și `db.json` eliminate | `frontend/package.json`, `frontend/src/api.js#L12-L16` | pornire doar backend + frontend |
+| S9-R5 | Fără erori CORS în consola browserului | `backend/src/app.js#L9` | verificare antet `Access-Control-Allow-Origin` și consolă browser |
+| S9-R6 | Secțiunea Etapa 9 în README + Jurnal AI | `ReadMee.md`, `ai-log/ai-log-etapa9.md` | citire |
+| S9-R7 | Commit-ul `Stage 9` publicat pe GitHub | istoricul de commit-uri | verificare GitHub |
