@@ -22,18 +22,16 @@
   --radius: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14121d;
-    --card: #1e1b2e;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --border: #352f4d;
-    --accent-soft: #222342;
-    --error-bg: #2a1622;
-    --error-border: #4a2437;
-    --shadow: none;
-  }
+:root.dark {
+  --bg: #14121d;
+  --card: #1e1b2e;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #352f4d;
+  --accent-soft: #222342;
+  --error-bg: #2a1622;
+  --error-border: #4a2437;
+  --shadow: none;
 }
 
 body {
